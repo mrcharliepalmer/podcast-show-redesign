@@ -436,7 +436,8 @@ h1, h2, h3, h4, .section-title, .hero-title {
 }
 
 .tickets-info h2 {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
+    line-height: 1.1;
     margin-bottom: var(--spacing-sm);
 }
 
@@ -816,14 +817,15 @@ h1, h2, h3, h4, .section-title, .hero-title {
 }
 
 .cta-section h2 {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
+    line-height: 1.1;
     margin-bottom: var(--spacing-md);
 }
 
 .cta-lead {
     font-size: 1.25rem;
     font-weight: 500;
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
     max-width: 680px;
     margin-left: auto;
     margin-right: auto;
@@ -1012,6 +1014,10 @@ h1, h2, h3, h4, .section-title, .hero-title {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .tickets-info h2 {
+        font-size: 2.5rem;
+    }
+
     .tickets-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1034,7 +1040,7 @@ h1, h2, h3, h4, .section-title, .hero-title {
     }
 
     .cta-section h2 {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
     .cta-lead {
