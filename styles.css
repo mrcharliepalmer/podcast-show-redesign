@@ -121,9 +121,6 @@ body {
     gap: var(--spacing-sm);
 }
 
-.navbar .btn-outline-pink {
-    color: var(--primary-color);
-}
 
 .mobile-menu-toggle {
     display: none;
@@ -438,17 +435,6 @@ h1, h2, h3, h4, .section-title, .hero-title {
     margin-bottom: var(--spacing-lg);
 }
 
-.tickets-badge {
-    display: inline-block;
-    background: #ff4444;
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-sm);
-}
-
 .tickets-info h2 {
     font-size: 2.5rem;
     margin-bottom: var(--spacing-sm);
@@ -461,13 +447,13 @@ h1, h2, h3, h4, .section-title, .hero-title {
 
 .tickets-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-md);
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-sm);
     margin-bottom: var(--spacing-md);
 }
 
 .ticket-card {
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm) var(--spacing-xs);
     border-radius: var(--border-radius);
     border: 2px solid transparent;
     text-align: center;
@@ -481,9 +467,48 @@ h1, h2, h3, h4, .section-title, .hero-title {
     z-index: 1;
 }
 
+.ticket-card .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+}
+
 .ticket-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Silver pass - sold out */
+.ticket-card-silver {
+    background: #e0e0e0;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    opacity: 0.85;
+}
+
+.ticket-card-silver:hover {
+    transform: none;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-card-silver h3,
+.ticket-card-silver .ticket-note {
+    color: var(--text-light);
+}
+
+.ticket-sold-out {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-22deg);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: rgba(0, 0, 0, 0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    white-space: nowrap;
+    z-index: 2;
+    pointer-events: none;
 }
 
 /* Gold passes - yellow with same bg image as Stats for matching texture */
@@ -568,27 +593,27 @@ h1, h2, h3, h4, .section-title, .hero-title {
 }
 
 .ticket-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: var(--spacing-md);
-    margin-top: var(--spacing-sm);
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+    margin-top: var(--spacing-xs);
 }
 
 .ticket-price {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: var(--spacing-xs);
 }
 
 .price-save {
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     font-weight: 600;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
 }
 
 .ticket-note {
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     color: var(--text-light);
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
 }
 
 .tickets-note {
@@ -988,7 +1013,19 @@ h1, h2, h3, h4, .section-title, .hero-title {
     }
 
     .tickets-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ticket-card h3 {
+        font-size: 1.125rem;
+    }
+
+    .ticket-price {
+        font-size: 1.25rem;
+    }
+
+    .ticket-sold-out {
+        font-size: 1.5rem;
     }
 
     .footer-bottom {
@@ -1048,6 +1085,10 @@ h1, h2, h3, h4, .section-title, .hero-title {
     }
 
     .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tickets-grid {
         grid-template-columns: 1fr;
     }
 }
