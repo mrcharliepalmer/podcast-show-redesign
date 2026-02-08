@@ -454,7 +454,9 @@ h1, h2, h3, h4, .section-title, .hero-title {
 }
 
 .ticket-card {
-    padding: var(--spacing-sm) var(--spacing-xs);
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-md);
     border-radius: var(--border-radius);
     border: 2px solid transparent;
     text-align: center;
@@ -480,6 +482,8 @@ h1, h2, h3, h4, .section-title, .hero-title {
 
 /* Silver pass - sold out */
 .ticket-card-silver {
+    --ticket-text: #4a4a4a;
+    --ticket-muted: #666;
     background: #e0e0e0;
     border-color: rgba(0, 0, 0, 0.15);
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
@@ -492,8 +496,14 @@ h1, h2, h3, h4, .section-title, .hero-title {
 }
 
 .ticket-card-silver h3,
-.ticket-card-silver .ticket-note {
-    color: var(--text-light);
+.ticket-card-silver .ticket-note,
+.ticket-card-silver .ticket-value-prop,
+.ticket-card-silver .ticket-perfect-for {
+    color: var(--ticket-text);
+}
+
+.ticket-card-silver .ticket-perfect-for {
+    color: var(--ticket-muted);
 }
 
 .ticket-sold-out {
@@ -514,6 +524,8 @@ h1, h2, h3, h4, .section-title, .hero-title {
 
 /* Gold passes - yellow with same bg image as Stats for matching texture */
 .ticket-card-gold {
+    --ticket-text: #1a1a1a;
+    --ticket-muted: rgba(0, 0, 0, 0.6);
     background: var(--tps-yellow) center center / cover no-repeat;
     background-image: url('https://cdn.asp.events/CLIENT_AV_Media_E63B4142_BA46_1D2B_9F2E146485599B42/sites/Podcast-Show-2022/media/TPS_BACKGROUND_Solid_yellow_1920x1208-2-.png');
     border-color: rgba(0, 0, 0, 0.1);
@@ -523,8 +535,13 @@ h1, h2, h3, h4, .section-title, .hero-title {
 .ticket-card-gold h3,
 .ticket-card-gold .ticket-price,
 .ticket-card-gold .price-save,
-.ticket-card-gold .ticket-note {
-    color: var(--primary-color);
+.ticket-card-gold .ticket-note,
+.ticket-card-gold .ticket-value-prop {
+    color: var(--ticket-text);
+}
+
+.ticket-card-gold .ticket-perfect-for {
+    color: var(--ticket-muted);
 }
 
 .ticket-card-gold .btn-primary {
@@ -553,6 +570,8 @@ h1, h2, h3, h4, .section-title, .hero-title {
 
 /* Platinum - purple with same bg image as Submissions for matching texture */
 .ticket-card-platinum {
+    --ticket-text: white;
+    --ticket-muted: rgba(255, 255, 255, 0.75);
     background: var(--tps-purple) center center / cover no-repeat;
     background-image: url('https://cdn.asp.events/CLIENT_AV_Media_E63B4142_BA46_1D2B_9F2E146485599B42/sites/Podcast-Show-2022/media/TPS_BACKGROUND_Solid_purple_1920x1208.png');
     border-color: rgba(255, 255, 255, 0.2);
@@ -562,8 +581,13 @@ h1, h2, h3, h4, .section-title, .hero-title {
 .ticket-card-platinum h3,
 .ticket-card-platinum .ticket-price,
 .ticket-card-platinum .price-save,
-.ticket-card-platinum .ticket-note {
-    color: white;
+.ticket-card-platinum .ticket-note,
+.ticket-card-platinum .ticket-value-prop {
+    color: var(--ticket-text);
+}
+
+.ticket-card-platinum .ticket-perfect-for {
+    color: var(--ticket-muted);
 }
 
 .ticket-card-platinum .btn-primary {
@@ -595,26 +619,49 @@ h1, h2, h3, h4, .section-title, .hero-title {
 
 .ticket-card h3 {
     font-size: 1.25rem;
-    margin-bottom: var(--spacing-sm);
-    margin-top: var(--spacing-xs);
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.ticket-value-prop {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    margin: 12px 0 6px;
+    line-height: 1.35;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.ticket-perfect-for {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--ticket-muted, #666);
+    margin: 0 0 16px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .ticket-price {
     font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: 4px;
 }
 
 .price-save {
     font-size: 0.875rem;
     font-weight: 600;
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: 12px;
 }
 
 .ticket-note {
     font-size: 0.8125rem;
-    color: var(--text-light);
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: 0;
+    margin-top: auto;
+}
+
+.ticket-card .btn {
+    margin-top: auto;
 }
 
 .tickets-note {
