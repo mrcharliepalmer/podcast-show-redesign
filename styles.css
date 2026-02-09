@@ -399,14 +399,14 @@ h1, h2, h3, h4, .section-title, .hero-title {
 
 .stats-intro {
     text-align: center;
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: var(--primary-color);
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    font-weight: 600;
+    color: #1a1a1a;
     margin-bottom: var(--spacing-lg);
-    max-width: 700px;
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    line-height: 1.7;
+    line-height: 1.5;
 }
 
 .stats-grid {
@@ -423,19 +423,15 @@ h1, h2, h3, h4, .section-title, .hero-title {
 .stat-number {
     font-size: clamp(3.5rem, 8vw, 5.5rem);
     font-weight: 900;
-    background: var(--gradient-purple-pink);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #1a1a1a;
     margin-bottom: var(--spacing-xs);
     letter-spacing: -0.03em;
 }
 
 .stat-label {
     font-size: 1.125rem;
-    color: var(--primary-color);
+    color: #1a1a1a;
     font-weight: 600;
-    opacity: 0.9;
 }
 
 /* Ross Adams Quote Section */
