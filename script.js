@@ -59,25 +59,21 @@ document.querySelectorAll('.section-reveal').forEach(section => {
 });
 
 // Animate stats on scroll
-const observerOptions = {
-    threshold: 0.5,
-    rootMargin: '0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
+const statObserverOptions = { threshold: 0.5, rootMargin: '0px' };
+const statObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
         }
     });
-}, observerOptions);
+}, statObserverOptions);
 
 document.querySelectorAll('.stat-item').forEach(item => {
     item.style.opacity = '0';
     item.style.transform = 'translateY(20px)';
     item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(item);
+    statObserver.observe(item);
 });
 
 // FAQ Accordion
