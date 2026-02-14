@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Print-optimised: A5-ish portrait for invites */
+        @page {
+            size: A5 portrait;
+            margin: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #faf9f7;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+        }
+
+        .invite {
+            width: 100%;
+            max-width: 420px;
+            background: #fff;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        /* Image section – replace src with your image path */
+        .invite-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            display: block;
+        }
+
+        .invite-image-placeholder {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #e8e4df 0%, #d4cfc8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .invite-body {
+            padding: 32px;
+        }
+
+        .invite-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .invite-subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 24px;
+        }
+
+        .invite-details {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .invite-details p {
+            margin-bottom: 12px;
+        }
+
+        /* Hide shadows and simplify for print */
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+            .invite {
+                max-width: 100%;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invite">
+        <!-- Option A: Use your own image – put it in the project folder and use e.g. -->
+        <!-- <img src="your-image.jpg" alt="Invitation" class="invite-image"> -->
+
+        <!-- Option B: Placeholder until you add your image -->
+        <div class="invite-image-placeholder">
+            Add your image here.<br>
+            Replace this div with:<br>
+            <code>&lt;img src="your-image.jpg" class="invite-image"&gt;</code>
+        </div>
+
+        <div class="invite-body">
+            <h1 class="invite-title">You're Invited</h1>
+            <p class="invite-subtitle">We'd love for you to join us</p>
+            <div class="invite-details">
+                <p><strong>When:</strong> [Date & Time]</p>
+                <p><strong>Where:</strong> [Venue / Address]</p>
+                <p><strong>Details:</strong> [Any extra info, dress code, etc.]</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

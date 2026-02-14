@@ -1,3 +1,39 @@
+// Hero background rotation – 5 images with crossfade
+// Only set the incoming slide’s image so we never change a visible/fading slide
+(function () {
+    var heroImages = [
+        'Photos/Famous faces/The_Podcast_Show_-_22nd_May_2024_by_Luke_Dyson_-_LD1_0417_1920x1280.jpg',
+        'Photos/Famous faces/Podcast_Show_2024_-_RB_-100453-2_1920x1280.jpg',
+        'Photos/Famous faces/The_Podcast_Show_-_23rd_May_2024_by_Luke_Dyson_-_LD3_0706_1920x1280.jpg',
+        'Photos/Audience/Podcast_Show_2024_-_RB_-201419_1920x1280.jpg',
+        'Photos/Audience/Podcast_Show_2024_-_RB_-208312_1920x1280.jpg'
+    ];
+    var slides = document.querySelectorAll('.hero-bg-slide');
+    if (!slides.length || !heroImages.length) return;
+    var currentIndex = 0;
+    var activeSlide = 0;
+    var transitionMs = 1200;
+    function setSlideBackground(slide, index) {
+        var path = heroImages[index].replace(/\\/g, '/');
+        slide.style.backgroundImage = 'url("' + encodeURI(path) + '")';
+    }
+    setSlideBackground(slides[0], 0);
+    slides[0].classList.add('active');
+    slides[1].classList.remove('active');
+    setInterval(function () {
+        currentIndex = (currentIndex + 1) % heroImages.length;
+        activeSlide = 1 - activeSlide;
+        var nextSlide = slides[activeSlide];
+        var prevSlide = slides[1 - activeSlide];
+        setSlideBackground(nextSlide, currentIndex);
+        nextSlide.classList.add('active');
+        prevSlide.classList.remove('active');
+        window.setTimeout(function () {
+            setSlideBackground(prevSlide, (currentIndex + 1) % heroImages.length);
+        }, transitionMs);
+    }, 5000);
+})();
+
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -76,21 +112,54 @@ document.querySelectorAll('.stat-item').forEach(item => {
     statObserver.observe(item);
 });
 
-// Quote carousel (slice below Choose Your Pass) – auto-rotates, no markers
+// Quote carousel – auto-rotates; background syncs with each quote for energy
+// Update hidden slide only after crossfade finishes so the change isn’t visible
 (function () {
     const slides = document.querySelectorAll('.quote-slide');
     const total = slides.length;
     if (!total) return;
+
+    var quoteBgImages = [
+        'Photos/Famous faces/Podcast_Show_2024_-_RB_-209429_1920x1280.jpg',
+        'Photos/Famous faces/The_Podcast_Show_-_23rd_May_2024_by_Luke_Dyson_-_LD3_0731_1920x1280.jpg',
+        'Photos/Famous faces/The_Podcast_Show_-_22nd_May_2024_by_Luke_Dyson_-_LD3_0387-Enhanced-NR_1920x1280.jpg',
+        'Photos/Audience/Podcast Show 2025 -Day 1-200796-2.jpg',
+        'Photos/Exhibitors/Podcast_Show_2024_-_RB_-209395_1920x1280.jpg'
+    ];
+    var bgSlides = document.querySelectorAll('.quote-section-bg-slide');
+    var bgActive = 0;
+    var quoteBgTransitionMs = 1000;
+
+    function setQuoteBg(slideEl, index) {
+        var path = quoteBgImages[index % quoteBgImages.length].replace(/\\/g, '/');
+        slideEl.style.backgroundImage = 'url("' + encodeURI(path) + '")';
+    }
+
+    if (bgSlides.length >= 2) {
+        setQuoteBg(bgSlides[0], 0);
+        bgSlides[0].classList.add('active');
+        bgSlides[1].classList.remove('active');
+    }
 
     let currentIndex = 0;
     const ROTATE_MS = 6000;
 
     function goTo(index) {
         currentIndex = (index + total) % total;
-        slides.forEach((s, i) => s.classList.toggle('active', i === currentIndex));
+        slides.forEach(function (s, i) { s.classList.toggle('active', i === currentIndex); });
+
+        if (bgSlides.length >= 2) {
+            bgActive = 1 - bgActive;
+            setQuoteBg(bgSlides[bgActive], currentIndex);
+            bgSlides[bgActive].classList.add('active');
+            bgSlides[1 - bgActive].classList.remove('active');
+            window.setTimeout(function () {
+                setQuoteBg(bgSlides[1 - bgActive], (currentIndex + 1) % total);
+            }, quoteBgTransitionMs);
+        }
     }
 
-    setInterval(() => goTo(currentIndex + 1), ROTATE_MS);
+    setInterval(function () { goTo(currentIndex + 1); }, ROTATE_MS);
 })();
 
 // FAQ Accordion

@@ -306,13 +306,31 @@ h1, h2, h3, h4, .section-title, .hero-title {
 /* Hero Section */
 .hero {
     position: relative;
-    background: url('https://cdn.asp.events/CLIENT_AV_Media_E63B4142_BA46_1D2B_9F2E146485599B42/sites/Podcast-Show-2022/media/Podcast_Show_2024_-_RB_-208641-2_1_2093x1396.jpg') center center / cover no-repeat;
     color: white;
     padding: var(--spacing-xl) 0;
     text-align: center;
     min-height: 70vh;
     display: flex;
     align-items: center;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.hero-bg-slide {
+    position: absolute;
+    inset: 0;
+    background: center center / cover no-repeat;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.hero-bg-slide.active {
+    opacity: 1;
 }
 
 .hero-overlay {
@@ -433,14 +451,41 @@ h1, h2, h3, h4, .section-title, .hero-title {
     font-weight: 600;
 }
 
-/* Ross Adams Quote Section - Cyan background (BoldBishops Backgrounds) */
+/* Quote section – rotating background, gradient overlay */
 .quote-section {
     padding: calc(var(--spacing-xl) + var(--spacing-md)) 0;
-    background: var(--tps-pink) center center / cover no-repeat;
-    background-image: url("BoldBishops%20Backgrounds/TPS_BACKGROUND_Solid%20pink.svg");
-    color: var(--primary-color);
+    background: #333;
+    color: white;
     text-align: center;
     position: relative;
+    overflow: hidden;
+}
+
+.quote-section-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.quote-section-bg-slide {
+    position: absolute;
+    inset: 0;
+    background: center center / cover no-repeat;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.quote-section-bg-slide.active {
+    opacity: 1;
+}
+
+.quote-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(135deg, rgba(107, 45, 158, 0.45) 0%, rgba(233, 30, 140, 0.4) 100%);
+    pointer-events: none;
 }
 
 /* Dotted pattern overlay (TPS “More Stages” style): light blue base + darker blue dots */
@@ -456,8 +501,8 @@ h1, h2, h3, h4, .section-title, .hero-title {
     font-weight: 900;
     line-height: 1.15;
     margin-bottom: var(--spacing-sm);
-    color: #0d0d0d;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 255, 255, 0.4);
+    color: white;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 0, 0, 0.2);
 }
 
 .quote-section .hero-quote-cite {
@@ -465,14 +510,14 @@ h1, h2, h3, h4, .section-title, .hero-title {
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 700;
-    color: #1a1a1a;
+    color: rgba(255, 255, 255, 0.95);
     font-family: 'Space Grotesk', sans-serif;
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
 }
 
 .quote-section .container {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -749,18 +794,23 @@ h1, h2, h3, h4, .section-title, .hero-title {
     position: relative;
 }
 
-.tickets .tickets-info h2,
+.tickets .tickets-info h2 {
+    color: white;
+}
+
 .tickets .tickets-description,
 .tickets .tickets-note {
-    color: var(--primary-color);
+    color: rgba(255, 255, 255, 0.95);
 }
 
 .tickets .tickets-description {
-    color: var(--secondary-color);
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .tickets .tickets-note {
-    color: var(--text-light);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .tickets-content {
@@ -878,18 +928,18 @@ h1, h2, h3, h4, .section-title, .hero-title {
 }
 
 .pass-header.platinum .pass-cta {
-    background: var(--tps-yellow);
-    color: var(--primary-color);
+    background: white;
+    color: var(--tps-purple);
 }
 
 .pass-header.platinum .pass-cta:hover {
-    background: var(--tps-yellow-dark);
-    color: var(--primary-color);
+    background: #f0e6ff;
+    color: var(--tps-purple);
     transform: translateY(-2px);
 }
 
 .pass-header.gold .pass-cta {
-    background: var(--primary-color);
+    background: #1a1a1a;
     color: var(--tps-yellow);
 }
 
