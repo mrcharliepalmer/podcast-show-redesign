@@ -1,39 +1,3 @@
-// Hero background rotation – 5 images with crossfade
-// Only set the incoming slide’s image so we never change a visible/fading slide
-(function () {
-    var heroImages = [
-        'Photos/Famous faces/The_Podcast_Show_-_22nd_May_2024_by_Luke_Dyson_-_LD1_0417_1920x1280.jpg',
-        'Photos/Famous faces/Podcast_Show_2024_-_RB_-100453-2_1920x1280.jpg',
-        'Photos/Famous faces/The_Podcast_Show_-_23rd_May_2024_by_Luke_Dyson_-_LD3_0706_1920x1280.jpg',
-        'Photos/Audience/Podcast_Show_2024_-_RB_-201419_1920x1280.jpg',
-        'Photos/Audience/Podcast_Show_2024_-_RB_-208312_1920x1280.jpg'
-    ];
-    var slides = document.querySelectorAll('.hero-bg-slide');
-    if (!slides.length || !heroImages.length) return;
-    var currentIndex = 0;
-    var activeSlide = 0;
-    var transitionMs = 1200;
-    function setSlideBackground(slide, index) {
-        var path = heroImages[index].replace(/\\/g, '/');
-        slide.style.backgroundImage = 'url("' + encodeURI(path) + '")';
-    }
-    setSlideBackground(slides[0], 0);
-    slides[0].classList.add('active');
-    slides[1].classList.remove('active');
-    setInterval(function () {
-        currentIndex = (currentIndex + 1) % heroImages.length;
-        activeSlide = 1 - activeSlide;
-        var nextSlide = slides[activeSlide];
-        var prevSlide = slides[1 - activeSlide];
-        setSlideBackground(nextSlide, currentIndex);
-        nextSlide.classList.add('active');
-        prevSlide.classList.remove('active');
-        window.setTimeout(function () {
-            setSlideBackground(prevSlide, (currentIndex + 1) % heroImages.length);
-        }, transitionMs);
-    }, 5000);
-})();
-
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {

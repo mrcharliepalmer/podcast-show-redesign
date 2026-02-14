@@ -306,31 +306,13 @@ h1, h2, h3, h4, .section-title, .hero-title {
 /* Hero Section */
 .hero {
     position: relative;
+    background: url('Photos/Famous%20faces/The_Podcast_Show_-_23rd_May_2024_by_Luke_Dyson_-_LD3_0706_1920x1280.jpg') center center / cover no-repeat;
     color: white;
     padding: var(--spacing-xl) 0;
     text-align: center;
     min-height: 70vh;
     display: flex;
     align-items: center;
-    overflow: hidden;
-}
-
-.hero-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-}
-
-.hero-bg-slide {
-    position: absolute;
-    inset: 0;
-    background: center center / cover no-repeat;
-    opacity: 0;
-    transition: opacity 1.2s ease-in-out;
-}
-
-.hero-bg-slide.active {
-    opacity: 1;
 }
 
 .hero-overlay {
@@ -1379,8 +1361,13 @@ h1, h2, h3, h4, .section-title, .hero-title {
     background: var(--bg-white);
 }
 
+.partners .section-title {
+    margin-bottom: var(--spacing-sm);
+}
+
 .partners-intro {
-    font-size: 1.125rem;
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    font-weight: 500;
     color: var(--text-light);
     margin-bottom: var(--spacing-lg);
     max-width: 600px;
