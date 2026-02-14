@@ -76,6 +76,23 @@ document.querySelectorAll('.stat-item').forEach(item => {
     statObserver.observe(item);
 });
 
+// Quote carousel (slice below Choose Your Pass) – auto-rotates, no markers
+(function () {
+    const slides = document.querySelectorAll('.quote-slide');
+    const total = slides.length;
+    if (!total) return;
+
+    let currentIndex = 0;
+    const ROTATE_MS = 6000;
+
+    function goTo(index) {
+        currentIndex = (index + total) % total;
+        slides.forEach((s, i) => s.classList.toggle('active', i === currentIndex));
+    }
+
+    setInterval(() => goTo(currentIndex + 1), ROTATE_MS);
+})();
+
 // FAQ Accordion
 document.querySelectorAll('.faq-question').forEach(button => {
     button.addEventListener('click', () => {

@@ -346,13 +346,12 @@ h1, h2, h3, h4, .section-title, .hero-title {
 }
 
 .hero-title {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: clamp(2.5rem, 6vw, 5rem);
     font-weight: 900;
     margin-bottom: var(--spacing-sm);
     line-height: 1.05;
     letter-spacing: -0.02em;
-    text-transform: uppercase;
     text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4), 0 0 40px rgba(107, 45, 158, 0.3);
 }
 
@@ -434,43 +433,93 @@ h1, h2, h3, h4, .section-title, .hero-title {
     font-weight: 600;
 }
 
-/* Ross Adams Quote Section */
+/* Ross Adams Quote Section - Cyan background (BoldBishops Backgrounds) */
 .quote-section {
-    padding: var(--spacing-xl) 0;
-    background: var(--gradient-purple-pink);
-    background-image: linear-gradient(135deg, var(--tps-purple) 20%, var(--tps-pink) 60%, var(--tps-yellow) 100%);
-    color: white;
+    padding: calc(var(--spacing-xl) + var(--spacing-md)) 0;
+    background: var(--tps-pink) center center / cover no-repeat;
+    background-image: url("BoldBishops%20Backgrounds/TPS_BACKGROUND_Solid%20pink.svg");
+    color: var(--primary-color);
     text-align: center;
     position: relative;
 }
 
+/* Dotted pattern overlay (TPS “More Stages” style): light blue base + darker blue dots */
 .quote-section .hero-quote {
     margin: 0;
     padding: 0;
     border: none;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 .quote-section .hero-quote-text {
-    font-size: clamp(2.25rem, 5.5vw, 4rem);
-    font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: var(--spacing-md);
-    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: var(--spacing-sm);
+    color: #0d0d0d;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 255, 255, 0.4);
 }
 
 .quote-section .hero-quote-cite {
     display: block;
     font-size: 1.25rem;
     font-style: normal;
-    font-weight: 600;
-    opacity: 0.95;
+    font-weight: 700;
+    color: #1a1a1a;
+    font-family: 'Space Grotesk', sans-serif;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 
 .quote-section .container {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-md);
+}
+
+/* Quote carousel (below Choose Your Pass) */
+.quote-carousel {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quote-carousel-track {
+    position: relative;
+    width: 100%;
+    min-height: 220px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quote-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    pointer-events: none;
+}
+
+.quote-slide.active {
+    position: absolute;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }
 
 .btn-quote-cta {
@@ -620,12 +669,14 @@ h1, h2, h3, h4, .section-title, .hero-title {
 }
 
 .section-title {
-    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-size: 3.5rem;
     font-weight: 900;
+    font-family: 'Space Grotesk', sans-serif;
     text-align: center;
     margin-bottom: var(--spacing-lg);
     color: var(--primary-color);
     letter-spacing: -0.02em;
+    line-height: 1.1;
 }
 
 .section-title-accent {
@@ -689,7 +740,8 @@ h1, h2, h3, h4, .section-title, .hero-title {
 /* Tickets Section */
 .tickets {
     padding: var(--spacing-xl) 0;
-    background: #FFF5FA;
+    background: var(--tps-blue) center center / cover no-repeat;
+    background-image: url("BoldBishops%20Backgrounds/TPS_BACKGROUND_Solid%20cyan.svg");
     color: var(--primary-color);
 }
 
@@ -723,6 +775,7 @@ h1, h2, h3, h4, .section-title, .hero-title {
 
 .tickets-info h2 {
     font-size: 3.5rem;
+    font-family: 'Space Grotesk', sans-serif;
     line-height: 1.1;
     margin-bottom: var(--spacing-sm);
 }
@@ -730,6 +783,159 @@ h1, h2, h3, h4, .section-title, .hero-title {
 .tickets-description {
     font-size: 1.125rem;
     color: var(--text-light);
+}
+
+/* Pass cards - two halves: coloured header (name, price, CTA) + white body (What you get / Best for) */
+.passes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    justify-content: center;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pass-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    transition: var(--transition);
+    background: var(--bg-white);
+}
+
+.pass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18);
+}
+
+.pass-header {
+    padding: 24px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 200px;
+}
+
+.pass-header.platinum {
+    background: var(--tps-purple) center center / cover no-repeat;
+    background-image: url('https://cdn.asp.events/CLIENT_AV_Media_E63B4142_BA46_1D2B_9F2E146485599B42/sites/Podcast-Show-2022/media/TPS_BACKGROUND_Solid_purple_1920x1208.png');
+    color: white;
+}
+
+.pass-header.gold {
+    background: var(--tps-yellow) center center / cover no-repeat;
+    background-image: url('https://cdn.asp.events/CLIENT_AV_Media_E63B4142_BA46_1D2B_9F2E146485599B42/sites/Podcast-Show-2022/media/TPS_BACKGROUND_Solid_yellow_1920x1208-2-.png');
+    color: var(--primary-color);
+}
+
+.pass-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.pass-price {
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+    letter-spacing: -0.02em;
+}
+
+.pass-final-price {
+    font-size: 0.8125rem;
+    opacity: 0.9;
+    margin-bottom: 12px;
+}
+
+.pass-header.gold .pass-final-price {
+    color: var(--primary-color);
+    opacity: 0.85;
+}
+
+.pass-note {
+    font-size: 0.8125rem;
+    margin-bottom: 16px;
+    opacity: 0.95;
+}
+
+.pass-cta {
+    margin-top: auto;
+    padding: 10px 24px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.pass-header.platinum .pass-cta {
+    background: var(--tps-yellow);
+    color: var(--primary-color);
+}
+
+.pass-header.platinum .pass-cta:hover {
+    background: var(--tps-yellow-dark);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.pass-header.gold .pass-cta {
+    background: var(--primary-color);
+    color: var(--tps-yellow);
+}
+
+.pass-header.gold .pass-cta:hover {
+    background: #333;
+    color: var(--tps-yellow);
+    transform: translateY(-2px);
+}
+
+.pass-body {
+    padding: 24px 20px;
+    background: var(--bg-white);
+    text-align: left;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.benefit-group {
+    margin-bottom: 16px;
+}
+
+.benefit-group:last-child {
+    margin-bottom: 0;
+}
+
+.benefit-label {
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 6px;
+}
+
+.benefit-items {
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    color: var(--secondary-color);
+    margin: 0;
+}
+
+.pass-divider {
+    height: 1px;
+    background: var(--border-color);
+    margin: 14px 0;
 }
 
 .tickets-grid {
@@ -936,6 +1142,53 @@ h1, h2, h3, h4, .section-title, .hero-title {
     color: var(--ticket-muted);
 }
 
+/* What you get / Best for - pass benefits */
+.ticket-card-benefits {
+    text-align: left;
+    margin: 1rem 0;
+    flex: 1;
+    min-width: 0;
+}
+
+.ticket-benefit-group {
+    margin-bottom: 1rem;
+}
+
+.ticket-benefit-group:last-child {
+    margin-bottom: 0;
+}
+
+.ticket-benefit-label {
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    color: var(--ticket-muted, #666);
+    margin-bottom: 0.35rem;
+}
+
+.ticket-benefit-items {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--ticket-muted, #666);
+    margin: 0;
+}
+
+.ticket-card-platinum .ticket-benefit-label,
+.ticket-card-platinum .ticket-benefit-items {
+    color: var(--ticket-muted);
+}
+
+.ticket-card-gold .ticket-benefit-label,
+.ticket-card-gold .ticket-benefit-items {
+    color: var(--ticket-muted);
+}
+
+.ticket-card-silver .ticket-benefit-label,
+.ticket-card-silver .ticket-benefit-items {
+    color: var(--ticket-muted);
+}
+
 .ticket-price {
     font-size: 1.5rem;
     font-weight: 700;
@@ -1015,7 +1268,7 @@ h1, h2, h3, h4, .section-title, .hero-title {
 /* Testimonials Section */
 .testimonials {
     background: #F5F0FF;
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-xl) 0 calc(var(--spacing-xl) + var(--spacing-lg));
 }
 
 .testimonials-grid {
@@ -1026,7 +1279,7 @@ h1, h2, h3, h4, .section-title, .hero-title {
 
 .testimonial-card {
     background: white;
-    padding: var(--spacing-lg);
+    padding: var(--spacing-lg) var(--spacing-xl);
     border-radius: 16px;
     border: 2px solid var(--border-color);
     text-align: center;
@@ -1054,17 +1307,19 @@ h1, h2, h3, h4, .section-title, .hero-title {
 }
 
 .testimonial-text {
-    font-size: 1.35rem;
+    font-size: 3.5rem;
+    font-weight: 900;
+    font-family: 'Space Grotesk', sans-serif;
     font-style: italic;
     margin-bottom: var(--spacing-md);
     color: var(--primary-color);
-    line-height: 1.6;
+    line-height: 1.15;
 }
 
 .testimonial-author {
-    font-size: 0.9375rem;
+    font-size: 1.125rem;
     color: var(--text-light);
-    font-weight: 500;
+    font-weight: 600;
 }
 
 /* Partners Section */
@@ -1081,6 +1336,19 @@ h1, h2, h3, h4, .section-title, .hero-title {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.partners-logo-stack {
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.logo-stack-img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .partners-grid {
@@ -1511,7 +1779,7 @@ h1, h2, h3, h4, .section-title, .hero-title {
     }
 
     .section-title {
-        font-size: 2.25rem;
+        font-size: 2.5rem;
     }
 
     .stat-number {
@@ -1550,8 +1818,21 @@ h1, h2, h3, h4, .section-title, .hero-title {
         font-size: 2.5rem;
     }
 
+    .quote-section .hero-quote-text {
+        font-size: 2.5rem;
+    }
+
+    .quote-carousel-track {
+        min-height: 200px;
+        height: 200px;
+    }
+
     .tickets-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .passes {
+        grid-template-columns: repeat(2, minmax(260px, 1fr));
     }
 
     .ticket-card h3 {
@@ -1608,9 +1889,6 @@ h1, h2, h3, h4, .section-title, .hero-title {
         grid-template-columns: 1fr;
     }
 
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-    }
 
     .newsletter-form {
         flex-direction: column;
@@ -1656,7 +1934,23 @@ h1, h2, h3, h4, .section-title, .hero-title {
         grid-template-columns: 1fr;
     }
 
-    .testimonial-text {
-        font-size: 1.15rem;
+    .passes {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .quote-section .hero-quote-text {
+        font-size: 2rem;
+    }
+
+    .quote-carousel-track {
+        min-height: 180px;
+        height: 180px;
     }
 }
