@@ -306,7 +306,7 @@ h1, h2, h3, h4, .section-title, .hero-title {
 /* Hero Section */
 .hero {
     position: relative;
-    background: url('Photos/Famous%20faces/The_Podcast_Show_-_23rd_May_2024_by_Luke_Dyson_-_LD3_0706_1920x1280.jpg') center center / cover no-repeat;
+    background: url('/podcast-show-redesign/Photos/Famous%20faces/The_Podcast_Show_-_23rd_May_2024_by_Luke_Dyson_-_LD3_0706_1920x1280.jpg') center center / cover no-repeat;
     color: white;
     padding: var(--spacing-xl) 0;
     text-align: center;
@@ -768,7 +768,7 @@ h1, h2, h3, h4, .section-title, .hero-title {
 .tickets {
     padding: var(--spacing-xl) 0;
     background: var(--tps-blue) center center / cover no-repeat;
-    background-image: url("BoldBishops%20Backgrounds/TPS_BACKGROUND_Solid%20cyan.svg");
+    background-image: url("/podcast-show-redesign/BoldBishops%20Backgrounds/TPS_BACKGROUND_Solid%20cyan.svg");
     color: var(--primary-color);
 }
 
@@ -1418,7 +1418,7 @@ h1, h2, h3, h4, .section-title, .hero-title {
 .announcement-bar {
     padding: var(--spacing-lg) var(--spacing-md);
     background-color: var(--tps-pink);
-    background-image: url("BoldBishops%20Backgrounds/TPS_BACKGROUND_Solid%20pink.svg");
+    background-image: url("/podcast-show-redesign/BoldBishops%20Backgrounds/TPS_BACKGROUND_Solid%20pink.svg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
