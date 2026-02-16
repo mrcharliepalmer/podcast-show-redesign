@@ -1436,6 +1436,48 @@ h1, h2, h3, h4, .section-title, .hero-title {
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
+.announcement-themes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1rem;
+    margin-top: var(--spacing-md);
+}
+
+.announcement-theme {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+/* Divider: indicative design ends */
+.site-continues {
+    padding: var(--spacing-xl) var(--spacing-md);
+    text-align: center;
+    background: var(--bg-white);
+    border-top: 1px dashed rgba(0, 0, 0, 0.15);
+}
+
+.site-continues-text {
+    margin: 0;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--primary-color);
+}
+
+/* Hidden: rest of homepage (Who Should Attend, Submissions, Programme, FAQ, Footer) */
+.homepage-rest-hidden {
+    display: none;
+}
+
 /* CTA Section - Submissions */
 .cta-section {
     padding: var(--spacing-xl) 0;
