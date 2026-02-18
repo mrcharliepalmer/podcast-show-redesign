@@ -770,9 +770,17 @@ h1, h2, h3, h4, .section-title, .hero-title {
 /* Tickets Section */
 .tickets {
     padding: var(--spacing-xl) 0;
-    background: var(--tps-blue) center center / cover no-repeat;
-    background-image: url("/podcast-show-redesign/BoldBishops%20Backgrounds/TPS_BACKGROUND_Solid%20cyan.svg");
+    background: #0d0118 url('/podcast-show-redesign/Photos/Audience/Podcast_Show_2024_-_RB_-208312_1920x1280.jpg') center/cover no-repeat;
     color: var(--primary-color);
+}
+
+.tickets::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(13, 1, 24, 0.93) 0%, rgba(30, 4, 56, 0.89) 100%);
+    pointer-events: none;
+    z-index: 0;
 }
 
 .tickets .tickets-content {
@@ -809,15 +817,30 @@ h1, h2, h3, h4, .section-title, .hero-title {
 }
 
 .tickets-info h2 {
-    font-size: 3.5rem;
+    font-size: clamp(3rem, 7vw, 5.5rem);
     font-family: 'Space Grotesk', sans-serif;
-    line-height: 1.1;
+    font-weight: 900;
+    line-height: 1.05;
     margin-bottom: var(--spacing-sm);
 }
 
 .tickets-description {
     font-size: 1.125rem;
     color: var(--text-light);
+}
+
+.tickets-urgency {
+    display: inline-block;
+    margin-top: var(--spacing-sm);
+    padding: 0.4rem 1.25rem;
+    background: rgba(255, 214, 0, 0.12);
+    border: 1px solid rgba(255, 214, 0, 0.4);
+    border-radius: 999px;
+    color: var(--tps-yellow);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: 0.02em;
 }
 
 /* Pass cards - two halves: coloured header (name, price, CTA) + white body (What you get / Best for) */
@@ -837,35 +860,35 @@ h1, h2, h3, h4, .section-title, .hero-title {
     flex-direction: column;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     transition: var(--transition);
     background: var(--bg-white);
 }
 
 .pass-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
 .pass-header {
-    padding: 24px 20px;
+    padding: 28px 20px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    min-height: 200px;
+    min-height: 240px;
 }
 
 .pass-header.platinum {
     background: var(--tps-purple) center center / cover no-repeat;
-    background-image: url('https://cdn.asp.events/CLIENT_AV_Media_E63B4142_BA46_1D2B_9F2E146485599B42/sites/Podcast-Show-2022/media/TPS_BACKGROUND_Solid_purple_1920x1208.png');
+    background-image: url('/podcast-show-redesign/BoldBishops%20Backgrounds/TPS_BACKGROUND_Platinum.png');
     color: white;
 }
 
 .pass-header.gold {
     background: var(--tps-yellow) center center / cover no-repeat;
-    background-image: url('https://cdn.asp.events/CLIENT_AV_Media_E63B4142_BA46_1D2B_9F2E146485599B42/sites/Podcast-Show-2022/media/TPS_BACKGROUND_Solid_yellow_1920x1208-2-.png');
+    background-image: url('/podcast-show-redesign/BoldBishops%20Backgrounds/TPS_BACKGROUND_Gold.png');
     color: var(--primary-color);
 }
 
@@ -877,10 +900,11 @@ h1, h2, h3, h4, .section-title, .hero-title {
 }
 
 .pass-price {
-    font-size: 2.25rem;
-    font-weight: 800;
+    font-size: 3.5rem;
+    font-weight: 900;
     margin-bottom: 4px;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
+    line-height: 1;
 }
 
 .pass-final-price {
