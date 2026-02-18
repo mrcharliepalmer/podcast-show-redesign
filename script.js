@@ -30,13 +30,13 @@ const navbar = document.querySelector('.navbar');
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-    
+
     if (currentScroll > 100) {
         navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
     } else {
         navbar.style.boxShadow = 'none';
     }
-    
+
     lastScroll = currentScroll;
 });
 
@@ -97,34 +97,11 @@ document.querySelectorAll('.section-reveal').forEach(section => {
     revealObserver.observe(section);
 });
 
-// Quote carousel – auto-rotates; background syncs with each quote for energy
-// Update hidden slide only after crossfade finishes so the change isn’t visible
+// Quote carousel – simple text rotation, no background images
 (function () {
     const slides = document.querySelectorAll('.quote-slide');
     const total = slides.length;
     if (!total) return;
-
-    var quoteBgImages = [
-        'Photos/Famous faces/Podcast_Show_2024_-_RB_-209429_1920x1280.jpg',
-        'Photos/Famous faces/The_Podcast_Show_-_23rd_May_2024_by_Luke_Dyson_-_LD3_0731_1920x1280.jpg',
-        'Photos/Famous faces/The_Podcast_Show_-_22nd_May_2024_by_Luke_Dyson_-_LD3_0387-Enhanced-NR_1920x1280.jpg',
-        'Photos/Audience/Podcast Show 2025 -Day 1-200796-2.jpg',
-        'Photos/Exhibitors/Podcast_Show_2024_-_RB_-209395_1920x1280.jpg'
-    ];
-    var bgSlides = document.querySelectorAll('.quote-section-bg-slide');
-    var bgActive = 0;
-    var quoteBgTransitionMs = 1000;
-
-    function setQuoteBg(slideEl, index) {
-        var path = quoteBgImages[index % quoteBgImages.length].replace(/\\/g, '/');
-        slideEl.style.backgroundImage = 'url("' + encodeURI(path) + '")';
-    }
-
-    if (bgSlides.length >= 2) {
-        setQuoteBg(bgSlides[0], 0);
-        bgSlides[0].classList.add('active');
-        bgSlides[1].classList.remove('active');
-    }
 
     let currentIndex = 0;
     const ROTATE_MS = 6000;
@@ -132,16 +109,6 @@ document.querySelectorAll('.section-reveal').forEach(section => {
     function goTo(index) {
         currentIndex = (index + total) % total;
         slides.forEach(function (s, i) { s.classList.toggle('active', i === currentIndex); });
-
-        if (bgSlides.length >= 2) {
-            bgActive = 1 - bgActive;
-            setQuoteBg(bgSlides[bgActive], currentIndex);
-            bgSlides[bgActive].classList.add('active');
-            bgSlides[1 - bgActive].classList.remove('active');
-            window.setTimeout(function () {
-                setQuoteBg(bgSlides[1 - bgActive], (currentIndex + 1) % total);
-            }, quoteBgTransitionMs);
-        }
     }
 
     setInterval(function () { goTo(currentIndex + 1); }, ROTATE_MS);
@@ -158,9 +125,9 @@ document.querySelectorAll('.faq-question').forEach(button => {
     button.addEventListener('click', () => {
         const item = button.parentElement;
         const isOpen = item.classList.contains('active');
-        
+
         document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-        
+
         if (!isOpen) {
             item.classList.add('active');
             button.setAttribute('aria-expanded', 'true');
