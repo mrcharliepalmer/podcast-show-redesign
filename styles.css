@@ -126,6 +126,7 @@ body {
     gap: var(--spacing-sm);
 }
 
+
 .mobile-menu-toggle {
     display: none;
     flex-direction: column;
@@ -192,6 +193,31 @@ h1, h2, h3, h4, .section-title, .hero-title {
     color: white;
 }
 
+.btn-outline-yellow {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--tps-yellow);
+}
+
+.btn-outline-yellow:hover {
+    background: var(--tps-yellow);
+    color: var(--primary-color);
+    transform: translateY(-1px);
+}
+
+.btn-outline-pink {
+    background: transparent;
+    color: var(--tps-pink);
+    border: 2px solid var(--tps-pink);
+}
+
+.btn-outline-pink:hover {
+    background: var(--tps-pink);
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* Filled buttons (for hero) */
 .btn-filled-yellow {
     background: var(--tps-yellow);
     color: var(--primary-color);
@@ -216,6 +242,35 @@ h1, h2, h3, h4, .section-title, .hero-title {
     border-color: var(--tps-pink-dark);
     color: white;
     transform: translateY(-1px);
+}
+
+/* Hero CTAs - stronger contrast */
+.btn-hero-primary {
+    background: linear-gradient(135deg, var(--tps-yellow) 0%, #ffed4e 100%);
+    color: var(--primary-color);
+    border: none;
+    box-shadow: 0 4px 24px rgba(255, 214, 0, 0.5);
+}
+
+.btn-hero-primary:hover {
+    background: linear-gradient(135deg, var(--tps-yellow-dark) 0%, var(--tps-yellow) 100%);
+    color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 36px rgba(255, 214, 0, 0.6);
+}
+
+.btn-hero-secondary {
+    background: var(--gradient-purple-pink);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.btn-hero-secondary:hover {
+    background: linear-gradient(135deg, var(--tps-purple-dark) 0%, var(--tps-pink-dark) 100%);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 36px rgba(107, 45, 158, 0.5);
 }
 
 /* Gradient CTA buttons */
@@ -277,6 +332,19 @@ h1, h2, h3, h4, .section-title, .hero-title {
     margin: 0 auto;
 }
 
+.hero-date-location {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    color: var(--tps-yellow);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    letter-spacing: 0.02em;
+}
+
+.hero-date-icon, .hero-loc-icon {
+    opacity: 0.95;
+}
+
 .hero-title {
     font-family: 'Space Grotesk', sans-serif;
     font-size: clamp(2.5rem, 6vw, 5rem);
@@ -310,18 +378,7 @@ h1, h2, h3, h4, .section-title, .hero-title {
 }
 
 .btn-hero-primary {
-    background: linear-gradient(135deg, var(--tps-yellow) 0%, #ffed4e 100%);
-    color: var(--primary-color);
-    border: none;
-    box-shadow: 0 4px 24px rgba(255, 214, 0, 0.5);
     animation: cta-pulse 2.5s ease-in-out infinite;
-}
-
-.btn-hero-primary:hover {
-    background: linear-gradient(135deg, var(--tps-yellow-dark) 0%, var(--tps-yellow) 100%);
-    color: var(--primary-color);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 36px rgba(255, 214, 0, 0.6);
 }
 
 @keyframes cta-pulse {
@@ -329,7 +386,7 @@ h1, h2, h3, h4, .section-title, .hero-title {
     50% { box-shadow: 0 4px 36px rgba(255, 214, 0, 0.7); }
 }
 
-/* Stats Section - yellow background */
+/* Stats Section - yellow background matching gold tickets */
 .stats {
     padding: var(--spacing-lg) 0;
     background-color: var(--tps-yellow);
@@ -379,79 +436,44 @@ h1, h2, h3, h4, .section-title, .hero-title {
     font-weight: 600;
 }
 
-/* Pillars — Connect · Tune In · Stay Sharp (photography-backed) */
-.pillars {
-    background: #0d0118;
-}
-
-.pillars-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-}
-
-.pillar-card {
-    position: relative;
-    min-height: 420px;
-    overflow: hidden;
-    display: flex;
-    align-items: flex-end;
-}
-
-.pillar-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-}
-
-.pillar-card:hover .pillar-bg {
-    transform: scale(1.05);
-}
-
-.pillar-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(13, 1, 24, 0.35);
-    pointer-events: none;
-}
-
-.pillar-content {
-    position: relative;
-    z-index: 1;
-    padding: var(--spacing-lg) var(--spacing-md);
-    color: white;
-}
-
-.pillar-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(2rem, 3.5vw, 2.75rem);
-    font-weight: 900;
-    margin-bottom: var(--spacing-xs);
-    letter-spacing: -0.02em;
-    text-transform: uppercase;
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 0, 0, 0.3);
-}
-
-.pillar-content p {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.95);
-    line-height: 1.6;
-    max-width: 340px;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
-}
-
-/* Quote section – solid gradient, no photos */
+/* Quote section – rotating background, gradient overlay */
 .quote-section {
     padding: calc(var(--spacing-xl) + var(--spacing-md)) 0;
-    background: linear-gradient(135deg, var(--tps-purple) 0%, var(--tps-purple-dark) 50%, var(--tps-pink) 100%);
+    background: #333;
     color: white;
     text-align: center;
     position: relative;
     overflow: hidden;
 }
 
+.quote-section-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.quote-section-bg-slide {
+    position: absolute;
+    inset: 0;
+    background: center center / cover no-repeat;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.quote-section-bg-slide.active {
+    opacity: 1;
+}
+
+.quote-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(135deg, rgba(107, 45, 158, 0.45) 0%, rgba(233, 30, 140, 0.4) 100%);
+    pointer-events: none;
+}
+
+/* Dotted pattern overlay (TPS “More Stages” style): light blue base + darker blue dots */
 .quote-section .hero-quote {
     margin: 0;
     padding: 0;
@@ -480,14 +502,14 @@ h1, h2, h3, h4, .section-title, .hero-title {
 
 .quote-section .container {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-md);
 }
 
-/* Quote carousel */
+/* Quote carousel (below Choose Your Pass) */
 .quote-carousel {
     width: 100%;
     max-width: 900px;
@@ -530,7 +552,152 @@ h1, h2, h3, h4, .section-title, .hero-title {
     pointer-events: auto;
 }
 
-/* Section titles */
+.btn-quote-cta {
+    display: inline-block;
+    margin-top: var(--spacing-sm);
+    padding: 1rem 2rem;
+    background: white;
+    color: var(--tps-purple);
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.btn-quote-cta:hover {
+    background: var(--tps-yellow);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Who Should Attend */
+.who-attend {
+    padding: var(--spacing-xl) 0;
+    background: var(--tps-purple-tint);
+}
+
+.who-attend .section-title-accent::after {
+    background: var(--gradient-purple-pink);
+}
+
+.who-attend-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.who-attend-card {
+    background: white;
+    padding: var(--spacing-lg);
+    border-radius: 12px;
+    text-align: center;
+    transition: var(--transition);
+    border: 2px solid transparent;
+    box-shadow: 0 4px 20px rgba(107, 45, 158, 0.08);
+}
+
+.who-attend-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(107, 45, 158, 0.15);
+    border-color: var(--tps-purple);
+}
+
+.who-attend-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto var(--spacing-md);
+    padding: var(--spacing-sm);
+    background: var(--gradient-purple-pink);
+    border-radius: 16px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.who-attend-card:hover .who-attend-icon {
+    transform: scale(1.05);
+}
+
+.who-attend-icon svg {
+    width: 40px;
+    height: 40px;
+}
+
+.who-attend-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    color: var(--primary-color);
+}
+
+.who-attend-card p {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
+}
+
+.who-attend-card .btn {
+    margin-top: auto;
+}
+
+/* Ticker strip */
+.ticker-strip {
+    position: relative;
+    background: var(--tps-purple) center center / cover no-repeat;
+    background-image: url('https://cdn.asp.events/CLIENT_AV_Media_E63B4142_BA46_1D2B_9F2E146485599B42/sites/Podcast-Show-2022/media/TPS_BACKGROUND_Solid_purple_1920x1208.png');
+    color: white;
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    letter-spacing: 0.02em;
+}
+
+/* Features Section */
+.features {
+    padding: var(--spacing-xl) 0;
+    background: var(--gradient-purple-pink);
+    background-image: linear-gradient(135deg, var(--tps-purple) 0%, var(--tps-pink) 100%);
+    color: white;
+    position: relative;
+}
+
+.features::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('https://cdn.asp.events/CLIENT_AV_Media_E63B4142_BA46_1D2B_9F2E146485599B42/sites/Podcast-Show-2022/media/TPS_BACKGROUND_Solid_purple_1920x1208.png') center/cover;
+    opacity: 0.3;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+}
+
+.features .section-title {
+    color: white;
+}
+
+.features .section-title-accent::after {
+    background: white;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+.feature-card h3 {
+    color: white;
+}
+
+.feature-card p {
+    color: rgba(255, 255, 255, 0.95);
+}
+
 .section-title {
     font-size: 3.5rem;
     font-weight: 900;
@@ -559,10 +726,45 @@ h1, h2, h3, h4, .section-title, .hero-title {
     border-radius: 2px;
 }
 
-/* Section CTA — centred button below section content */
-.section-cta {
+.feature-card {
+    padding: var(--spacing-md);
     text-align: center;
-    margin-top: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--spacing-md);
+    padding: var(--spacing-sm);
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.feature-icon svg {
+    width: 48px;
+    height: 48px;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
 }
 
 /* Tickets Section */
@@ -641,24 +843,7 @@ h1, h2, h3, h4, .section-title, .hero-title {
     letter-spacing: 0.02em;
 }
 
-.tickets-note {
-    text-align: center;
-    color: var(--text-light);
-    font-size: 0.875rem;
-}
-
-.tickets-note-link {
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    transition: var(--transition);
-}
-
-.tickets-note-link:hover {
-    color: white;
-}
-
-/* Pass cards */
+/* Pass cards - two halves: coloured header (name, price, CTA) + white body (What you get / Best for) */
 .passes {
     display: grid;
     grid-template-columns: repeat(3, minmax(280px, 1fr));
@@ -731,6 +916,12 @@ h1, h2, h3, h4, .section-title, .hero-title {
 .pass-header.gold .pass-final-price {
     color: var(--primary-color);
     opacity: 0.85;
+}
+
+.pass-note {
+    font-size: 0.8125rem;
+    margin-bottom: 16px;
+    opacity: 0.95;
 }
 
 .pass-cta {
@@ -806,6 +997,285 @@ h1, h2, h3, h4, .section-title, .hero-title {
     margin: 14px 0;
 }
 
+.tickets-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.ticket-card {
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    border: 2px solid transparent;
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.ticket-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.ticket-card .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+}
+
+.ticket-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+
+.ticket-card-gold:hover,
+.ticket-card-platinum:hover {
+    border-color: var(--tps-purple);
+    box-shadow: 0 20px 50px rgba(107, 45, 158, 0.3), 0 0 0 2px rgba(107, 45, 158, 0.3);
+}
+
+/* Silver pass - sold out */
+.ticket-card-silver {
+    --ticket-text: #4a4a4a;
+    --ticket-muted: #666;
+    background: #e0e0e0;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    opacity: 0.85;
+}
+
+.ticket-card-silver:hover {
+    transform: none;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-card-silver h3,
+.ticket-card-silver .ticket-note,
+.ticket-card-silver .ticket-who-for {
+    color: var(--ticket-text);
+}
+
+.ticket-card-silver .ticket-who-for {
+    color: var(--ticket-muted);
+}
+
+.ticket-sold-out {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-22deg);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #e74c3c;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    white-space: nowrap;
+    z-index: 2;
+    pointer-events: none;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Gold passes - yellow with same bg image as Stats for matching texture */
+.ticket-card-gold {
+    --ticket-text: #1a1a1a;
+    --ticket-muted: rgba(0, 0, 0, 0.6);
+    background: var(--tps-yellow) center center / cover no-repeat;
+    background-image: url('https://cdn.asp.events/CLIENT_AV_Media_E63B4142_BA46_1D2B_9F2E146485599B42/sites/Podcast-Show-2022/media/TPS_BACKGROUND_Solid_yellow_1920x1208-2-.png');
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(255, 214, 0, 0.3);
+}
+
+.ticket-card-gold h3,
+.ticket-card-gold .ticket-price,
+.ticket-card-gold .price-save,
+.ticket-card-gold .ticket-note {
+    color: var(--ticket-text);
+}
+
+.ticket-card-gold .ticket-who-for {
+    color: var(--ticket-muted);
+}
+
+.ticket-card-gold .btn-primary {
+    background: var(--primary-color);
+    color: var(--tps-yellow);
+}
+
+.ticket-card-gold .btn-primary:hover {
+    background: #333;
+    color: var(--tps-yellow);
+}
+
+.ticket-card-gold:hover {
+    box-shadow: 0 16px 40px rgba(255, 214, 0, 0.4);
+}
+
+.ticket-card-featured {
+    border-width: 3px;
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+.ticket-card-featured .ticket-badge {
+    background: var(--gradient-purple-pink);
+    color: white;
+    padding: 0.4rem 1rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    box-shadow: 0 4px 16px rgba(107, 45, 158, 0.4);
+}
+
+/* Platinum - purple with same bg image as Submissions for matching texture */
+.ticket-card-platinum {
+    --ticket-text: white;
+    --ticket-muted: rgba(255, 255, 255, 0.75);
+    background: var(--tps-purple) center center / cover no-repeat;
+    background-image: url('https://cdn.asp.events/CLIENT_AV_Media_E63B4142_BA46_1D2B_9F2E146485599B42/sites/Podcast-Show-2022/media/TPS_BACKGROUND_Solid_purple_1920x1208.png');
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 20px rgba(107, 45, 158, 0.35);
+}
+
+.ticket-card-platinum h3,
+.ticket-card-platinum .ticket-price,
+.ticket-card-platinum .price-save,
+.ticket-card-platinum .ticket-note {
+    color: var(--ticket-text);
+}
+
+.ticket-card-platinum .ticket-who-for {
+    color: var(--ticket-muted);
+}
+
+.ticket-card-platinum .btn-primary {
+    background: var(--tps-yellow);
+    color: var(--primary-color);
+}
+
+.ticket-card-platinum .btn-primary:hover {
+    background: var(--tps-yellow-dark);
+    color: var(--primary-color);
+}
+
+.ticket-card-platinum:hover {
+    box-shadow: 0 16px 40px rgba(107, 45, 158, 0.45);
+}
+
+.ticket-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--tps-purple);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.ticket-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.ticket-who-for {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--ticket-muted, #666);
+    margin: 12px 0 16px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.ticket-card-silver .ticket-who-for,
+.ticket-card-gold .ticket-who-for {
+    color: var(--ticket-muted);
+}
+
+.ticket-card-platinum .ticket-who-for {
+    color: var(--ticket-muted);
+}
+
+/* What you get / Best for - pass benefits */
+.ticket-card-benefits {
+    text-align: left;
+    margin: 1rem 0;
+    flex: 1;
+    min-width: 0;
+}
+
+.ticket-benefit-group {
+    margin-bottom: 1rem;
+}
+
+.ticket-benefit-group:last-child {
+    margin-bottom: 0;
+}
+
+.ticket-benefit-label {
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    color: var(--ticket-muted, #666);
+    margin-bottom: 0.35rem;
+}
+
+.ticket-benefit-items {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--ticket-muted, #666);
+    margin: 0;
+}
+
+.ticket-card-platinum .ticket-benefit-label,
+.ticket-card-platinum .ticket-benefit-items {
+    color: var(--ticket-muted);
+}
+
+.ticket-card-gold .ticket-benefit-label,
+.ticket-card-gold .ticket-benefit-items {
+    color: var(--ticket-muted);
+}
+
+.ticket-card-silver .ticket-benefit-label,
+.ticket-card-silver .ticket-benefit-items {
+    color: var(--ticket-muted);
+}
+
+.ticket-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.price-save {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.ticket-note {
+    font-size: 0.8125rem;
+    margin-bottom: 0;
+    margin-top: auto;
+}
+
+.ticket-card .btn {
+    margin-top: auto;
+}
+
+.tickets-note {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.875rem;
+}
+
 /* Programme Section */
 .programme {
     padding: var(--spacing-xl) 0;
@@ -824,40 +1294,16 @@ h1, h2, h3, h4, .section-title, .hero-title {
 }
 
 .programme-card {
-    background: var(--bg-white);
-    border: 2px solid var(--border-color);
-    border-radius: 12px;
-    overflow: hidden;
+    padding: var(--spacing-md);
+    background: var(--tps-purple-tint);
+    border: 2px solid rgba(107, 45, 158, 0.15);
+    border-radius: var(--border-radius);
     transition: var(--transition);
-    display: flex;
-    flex-direction: column;
 }
 
 .programme-card:hover {
     border-color: var(--tps-purple);
-    box-shadow: 0 12px 32px rgba(107, 45, 158, 0.15);
-    transform: translateY(-4px);
-}
-
-.programme-card-img {
-    height: 200px;
-    overflow: hidden;
-}
-
-.programme-card-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.programme-card:hover .programme-card-img img {
-    transform: scale(1.06);
-}
-
-.programme-card-body {
-    padding: var(--spacing-md);
-    flex: 1;
+    box-shadow: 0 8px 24px rgba(107, 45, 158, 0.15);
 }
 
 .programme-card h3 {
@@ -876,6 +1322,140 @@ h1, h2, h3, h4, .section-title, .hero-title {
 .programme-card p {
     color: var(--secondary-color);
     line-height: 1.7;
+}
+
+/* Testimonials Section */
+.testimonials {
+    background: #F5F0FF;
+    padding: var(--spacing-xl) 0 calc(var(--spacing-xl) + var(--spacing-lg));
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.testimonial-card {
+    background: white;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-radius: 16px;
+    border: 2px solid var(--border-color);
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: 0 4px 20px rgba(107, 45, 158, 0.06);
+}
+
+.testimonial-card:hover {
+    border-color: var(--tps-purple);
+    box-shadow: 0 8px 30px rgba(107, 45, 158, 0.12);
+}
+
+.testimonial-card-flip {
+    border-left: 2px solid var(--border-color);
+    border-right: 2px solid var(--border-color);
+}
+
+.testimonial-headshot {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--spacing-md);
+    border-radius: 50%;
+    background: var(--gradient-purple-pink);
+    opacity: 0.9;
+}
+
+.testimonial-text {
+    font-size: 3.5rem;
+    font-weight: 900;
+    font-family: 'Space Grotesk', sans-serif;
+    font-style: italic;
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-color);
+    line-height: 1.15;
+}
+
+.testimonial-author {
+    font-size: 1.125rem;
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+/* Partners Section */
+.partners {
+    padding: var(--spacing-xl) 0;
+    background: linear-gradient(135deg, #0d0118 0%, #1e0438 100%);
+}
+
+.partners-split {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+}
+
+.partners-content {
+    text-align: left;
+}
+
+.partners-eyebrow {
+    font-size: 0.875rem;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--tps-yellow);
+    margin-bottom: var(--spacing-sm);
+}
+
+.partners-heading {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: 900;
+    color: white;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--spacing-lg);
+}
+
+.partners-logo-stack {
+    text-align: center;
+}
+
+.logo-stack-img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    filter: invert(1);
+    mix-blend-mode: screen;
+}
+
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    align-items: center;
+    justify-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.partner-logo {
+    max-height: 48px;
+    max-width: 140px;
+    transition: var(--transition);
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.8;
+    transition: var(--transition);
+}
+
+.partner-logo:hover {
+    filter: grayscale(0);
+    opacity: 1;
+    transform: scale(1.08);
 }
 
 /* First content announcement bar */
@@ -945,58 +1525,148 @@ h1, h2, h3, h4, .section-title, .hero-title {
 }
 
 .announcement-theme::after {
-    content: ' \00b7';
+    content: ' •';
     opacity: 0.5;
     margin-left: 1.5rem;
 }
 
-/* Partners Section */
-.partners {
-    padding: var(--spacing-xl) 0;
+/* Divider: indicative design ends */
+.site-continues {
+    padding: var(--spacing-xl) var(--spacing-md);
+    text-align: center;
     background: var(--bg-white);
+    border-top: 1px dashed rgba(0, 0, 0, 0.15);
 }
 
-.partners-split {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: var(--spacing-xl);
-    align-items: center;
-}
-
-.partners-content {
-    text-align: left;
-}
-
-.partners-eyebrow {
-    font-size: 0.875rem;
+.site-continues-text {
+    margin: 0;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
     font-weight: 700;
     font-family: 'Space Grotesk', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--tps-purple);
-    margin-bottom: var(--spacing-sm);
-}
-
-.partners-heading {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(2rem, 4vw, 3.25rem);
-    font-weight: 900;
     color: var(--primary-color);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    margin-bottom: var(--spacing-lg);
 }
 
-.partners-logo-stack {
+/* Hidden: rest of homepage (Who Should Attend, Submissions, Programme, FAQ, Footer) */
+.homepage-rest-hidden {
+    display: none;
+}
+
+/* CTA Section - Submissions */
+.cta-section {
+    padding: var(--spacing-xl) 0;
     text-align: center;
 }
 
-.logo-stack-img {
-    max-width: 100%;
-    width: auto;
-    height: auto;
+.cta-submissions {
+    background: var(--tps-blue);
+    color: var(--primary-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-submissions h2 {
+    color: var(--primary-color);
+}
+
+.cta-submissions .cta-lead {
+    color: var(--secondary-color);
+}
+
+.cta-submissions .cta-btn {
+    background: var(--gradient-purple-pink);
+    color: white;
+    border: none;
+    animation: cta-btn-glow 3s ease-in-out infinite;
+}
+
+.cta-submissions-image {
+    transition: var(--transition);
+}
+
+.cta-submissions-image:hover img {
+    transform: scale(1.05);
+}
+
+.cta-submissions-image img {
+    transition: transform 0.5s ease;
+}
+
+.cta-submissions .container {
+    position: relative;
+    z-index: 1;
+}
+
+.cta-submissions .ticker-strip {
+    margin-top: var(--spacing-lg);
+}
+
+.cta-submissions-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: var(--spacing-lg);
+    align-items: center;
+    text-align: left;
+}
+
+.cta-submissions-content {
+    max-width: 520px;
+}
+
+.cta-submissions-image {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.cta-submissions-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 380px;
     display: block;
-    margin: 0 auto;
+    filter: saturate(1.12);
+}
+
+.cta-submissions-content .cta-lead,
+.cta-submissions-content .cta-body {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.cta-section h2 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: var(--spacing-md);
+}
+
+.cta-lead {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-md);
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.cta-body {
+    font-size: 1.0625rem;
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.95;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+}
+
+.cta-btn {
+    animation: cta-btn-glow 3s ease-in-out infinite;
+}
+
+@keyframes cta-btn-glow {
+    0%, 100% { box-shadow: 0 4px 20px rgba(107, 45, 158, 0.35); }
+    50% { box-shadow: 0 6px 30px rgba(107, 45, 158, 0.5); }
 }
 
 /* FAQ Section */
@@ -1124,14 +1794,6 @@ h1, h2, h3, h4, .section-title, .hero-title {
     color: white;
 }
 
-.footer-section ul {
-    list-style: none;
-}
-
-.footer-section ul li {
-    margin-bottom: var(--spacing-xs);
-}
-
 .newsletter-form {
     display: flex;
     gap: var(--spacing-xs);
@@ -1165,6 +1827,14 @@ h1, h2, h3, h4, .section-title, .hero-title {
     background: var(--tps-yellow-dark);
     color: var(--primary-color);
     transform: translateY(-2px);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: var(--spacing-xs);
 }
 
 .social-links {
@@ -1218,7 +1888,7 @@ h1, h2, h3, h4, .section-title, .hero-title {
     color: white;
 }
 
-/* Scroll reveal animations */
+/* Scroll reveal animations - sections start hidden, animate in on scroll */
 .section-reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -1287,12 +1957,8 @@ h1, h2, h3, h4, .section-title, .hero-title {
         font-size: 2.5rem;
     }
 
-    .pillars-grid {
+    .who-attend-grid {
         grid-template-columns: 1fr;
-    }
-
-    .pillar-card {
-        min-height: 320px;
     }
 
     .hero-cta {
@@ -1311,6 +1977,10 @@ h1, h2, h3, h4, .section-title, .hero-title {
         font-size: 3rem;
     }
 
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
     .partners-split {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
@@ -1324,16 +1994,16 @@ h1, h2, h3, h4, .section-title, .hero-title {
         font-size: 2rem;
     }
 
+    .partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .tickets-info h2 {
         font-size: 2.25rem;
     }
 
     .pass-price {
         font-size: 2.75rem;
-    }
-
-    .passes {
-        grid-template-columns: repeat(2, 1fr);
     }
 
     .announcement-bar-text {
@@ -1357,10 +2027,68 @@ h1, h2, h3, h4, .section-title, .hero-title {
         height: 200px;
     }
 
+    .tickets-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .passes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ticket-card h3 {
+        font-size: 1.125rem;
+    }
+
+    .ticket-price {
+        font-size: 1.25rem;
+    }
+
+    .ticket-sold-out {
+        font-size: 1.5rem;
+    }
+
     .footer-bottom {
         flex-direction: column;
         text-align: center;
     }
+
+    .cta-section h2 {
+        font-size: 2.5rem;
+    }
+
+    .cta-lead {
+        font-size: 1.125rem;
+    }
+
+    .cta-submissions-inner {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        text-align: center;
+    }
+
+    .cta-submissions-content {
+        max-width: none;
+    }
+
+    .cta-submissions-content .cta-lead,
+    .cta-submissions-content .cta-body {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cta-submissions-image {
+        order: -1;
+        min-height: 280px;
+    }
+
+    .cta-submissions-image img {
+        min-height: 280px;
+    }
+
+    .who-attend-grid {
+        grid-template-columns: 1fr;
+    }
+
 
     .newsletter-form {
         flex-direction: column;
@@ -1368,8 +2096,8 @@ h1, h2, h3, h4, .section-title, .hero-title {
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
-    .pillars-grid {
-        grid-template-columns: 1fr;
+    .who-attend-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -1402,9 +2130,19 @@ h1, h2, h3, h4, .section-title, .hero-title {
         grid-template-columns: 1fr;
     }
 
+    .tickets-grid {
+        grid-template-columns: 1fr;
+    }
+
     .passes {
         grid-template-columns: 1fr;
-        max-width: 100%;
+        max-width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
     }
 
     .quote-section .hero-quote-text {
@@ -1430,5 +2168,9 @@ h1, h2, h3, h4, .section-title, .hero-title {
 
     .announcement-theme {
         font-size: 1.125rem;
+    }
+
+    .passes {
+        max-width: 100%;
     }
 }
