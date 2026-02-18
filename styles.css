@@ -1431,12 +1431,23 @@ h1, h2, h3, h4, .section-title, .hero-title {
 
 .announcement-bar-text {
     margin: 0;
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
-    font-weight: 800;
+    font-size: clamp(2.75rem, 7vw, 5rem);
+    font-weight: 900;
     font-family: 'Space Grotesk', sans-serif;
     letter-spacing: 0.02em;
     text-transform: uppercase;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    line-height: 1.05;
+}
+
+.announcement-bar-date {
+    margin: 0.6rem 0 0;
+    font-size: 1.125rem;
+    font-weight: 500;
+    font-family: 'Space Grotesk', sans-serif;
+    color: rgba(255, 255, 255, 0.75);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .announcement-themes {
@@ -1447,9 +1458,9 @@ h1, h2, h3, h4, .section-title, .hero-title {
 
 .announcement-themes-track {
     display: flex;
-    gap: 1rem;
+    gap: 3rem;
     width: max-content;
-    animation: ticker-scroll 30s linear infinite;
+    animation: ticker-scroll 45s linear infinite;
     padding: 0.25rem 0;
 }
 
@@ -1463,16 +1474,19 @@ h1, h2, h3, h4, .section-title, .hero-title {
 }
 
 .announcement-theme {
-    display: inline-block;
-    padding: 0.35rem 0.75rem;
-    font-size: 0.8125rem;
-    font-weight: 600;
+    font-size: 1.5rem;
+    font-weight: 700;
     font-family: 'Space Grotesk', sans-serif;
-    color: white;
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 999px;
+    color: var(--tps-yellow);
     white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.announcement-theme::after {
+    content: ' •';
+    opacity: 0.5;
+    margin-left: 3rem;
 }
 
 /* Divider: indicative design ends */
