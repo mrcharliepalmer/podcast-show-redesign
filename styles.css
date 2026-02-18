@@ -1458,7 +1458,7 @@ h1, h2, h3, h4, .section-title, .hero-title {
 
 .announcement-themes-track {
     display: flex;
-    gap: 3rem;
+    gap: 1.5rem;
     width: max-content;
     animation: ticker-scroll 45s linear infinite;
     padding: 0.25rem 0;
@@ -1486,7 +1486,7 @@ h1, h2, h3, h4, .section-title, .hero-title {
 .announcement-theme::after {
     content: ' •';
     opacity: 0.5;
-    margin-left: 3rem;
+    margin-left: 1.5rem;
 }
 
 /* Divider: indicative design ends */
