@@ -1395,7 +1395,10 @@ h1, h2, h3, h4, .section-title, .hero-title {
 }
 
 .partners-logo-stack {
-    text-align: center;
+    background: white;
+    border-radius: 16px;
+    padding: var(--spacing-md);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
 }
 
 .logo-stack-img {
@@ -1404,7 +1407,6 @@ h1, h2, h3, h4, .section-title, .hero-title {
     height: auto;
     display: block;
     margin: 0 auto;
-    border-radius: var(--border-radius);
 }
 
 .partners-grid {
