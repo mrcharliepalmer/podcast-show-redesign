@@ -436,41 +436,14 @@ h1, h2, h3, h4, .section-title, .hero-title {
     font-weight: 600;
 }
 
-/* Quote section – rotating background, gradient overlay */
+/* Quote section – solid gradient, no photos */
 .quote-section {
     padding: calc(var(--spacing-xl) + var(--spacing-md)) 0;
-    background: #333;
+    background: linear-gradient(135deg, var(--tps-purple) 0%, var(--tps-purple-dark) 50%, var(--tps-pink) 100%);
     color: white;
     text-align: center;
     position: relative;
     overflow: hidden;
-}
-
-.quote-section-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-}
-
-.quote-section-bg-slide {
-    position: absolute;
-    inset: 0;
-    background: center center / cover no-repeat;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
-
-.quote-section-bg-slide.active {
-    opacity: 1;
-}
-
-.quote-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: linear-gradient(135deg, rgba(107, 45, 158, 0.45) 0%, rgba(233, 30, 140, 0.4) 100%);
-    pointer-events: none;
 }
 
 /* Dotted pattern overlay (TPS “More Stages” style): light blue base + darker blue dots */
@@ -502,7 +475,7 @@ h1, h2, h3, h4, .section-title, .hero-title {
 
 .quote-section .container {
     position: relative;
-    z-index: 2;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -604,7 +577,7 @@ h1, h2, h3, h4, .section-title, .hero-title {
 .pillar-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(13, 1, 24, 0.9) 0%, rgba(13, 1, 24, 0.3) 50%, rgba(13, 1, 24, 0.1) 100%);
+    background: rgba(13, 1, 24, 0.35);
     pointer-events: none;
 }
 
@@ -622,85 +595,81 @@ h1, h2, h3, h4, .section-title, .hero-title {
     margin-bottom: var(--spacing-xs);
     letter-spacing: -0.02em;
     text-transform: uppercase;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 0, 0, 0.3);
 }
 
 .pillar-content p {
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.95);
     line-height: 1.6;
     max-width: 340px;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
 }
 
-/* Who Should Attend — photography-backed audience routing */
+/* Who Should Attend — clean light cards */
 .who-attend {
-    padding: var(--spacing-lg) 0 0;
-    background: #0d0118;
+    padding: var(--spacing-xl) 0;
+    background: var(--bg-white);
 }
 
-.who-attend-title {
-    color: white;
-    margin-bottom: var(--spacing-md);
+.who-attend .section-title-accent::after {
+    background: var(--gradient-purple-pink);
 }
 
 .who-attend-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
 }
 
 .who-attend-card {
-    position: relative;
-    min-height: 380px;
-    overflow: hidden;
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
+    padding: var(--spacing-lg);
+    border-radius: 12px;
     text-decoration: none;
-    color: white;
-}
-
-.who-attend-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-}
-
-.who-attend-card:hover .who-attend-bg {
-    transform: scale(1.05);
-}
-
-.who-attend-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(107, 45, 158, 0.92) 0%, rgba(107, 45, 158, 0.4) 50%, rgba(0, 0, 0, 0.2) 100%);
-    transition: background 0.4s ease;
-    pointer-events: none;
-}
-
-.who-attend-card:hover .who-attend-overlay {
-    background: linear-gradient(to top, rgba(233, 30, 140, 0.92) 0%, rgba(233, 30, 140, 0.4) 50%, rgba(0, 0, 0, 0.2) 100%);
-}
-
-.who-attend-content {
+    color: var(--primary-color);
+    background: var(--bg-white);
+    border: 2px solid var(--border-color);
+    transition: var(--transition);
     position: relative;
-    z-index: 1;
-    padding: var(--spacing-lg) var(--spacing-md);
+    overflow: hidden;
 }
 
-.who-attend-content h3 {
+.who-attend-card:hover {
+    border-color: var(--tps-purple);
+    box-shadow: 0 12px 40px rgba(107, 45, 158, 0.12);
+    transform: translateY(-4px);
+}
+
+.who-attend-accent {
+    width: 48px;
+    height: 4px;
+    background: var(--gradient-purple-pink);
+    border-radius: 2px;
+    margin-bottom: var(--spacing-md);
+    transition: width 0.3s ease;
+}
+
+.who-attend-card:hover .who-attend-accent {
+    width: 72px;
+}
+
+.who-attend-card h3 {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 800;
-    margin-bottom: var(--spacing-xs);
-    color: white;
+    margin-bottom: var(--spacing-sm);
+    color: var(--primary-color);
 }
 
-.who-attend-content p {
-    font-size: 0.9375rem;
-    color: rgba(255, 255, 255, 0.9);
+.who-attend-card p {
+    font-size: 1rem;
+    color: var(--secondary-color);
     line-height: 1.6;
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    flex: 1;
 }
 
 .who-attend-link {
@@ -709,11 +678,12 @@ h1, h2, h3, h4, .section-title, .hero-title {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: var(--tps-yellow);
+    color: var(--tps-purple);
     transition: var(--transition);
 }
 
 .who-attend-card:hover .who-attend-link {
+    color: var(--tps-pink);
     transform: translateX(4px);
 }
 
@@ -2059,10 +2029,6 @@ h1, h2, h3, h4, .section-title, .hero-title {
 
     .who-attend-grid {
         grid-template-columns: 1fr;
-    }
-
-    .who-attend-card {
-        min-height: 300px;
     }
 
     .hero-cta {
