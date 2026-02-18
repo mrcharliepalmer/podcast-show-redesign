@@ -147,6 +147,12 @@ document.querySelectorAll('.section-reveal').forEach(section => {
     setInterval(function () { goTo(currentIndex + 1); }, ROTATE_MS);
 })();
 
+// Announcement ticker — duplicate items for seamless loop
+const tickerTrack = document.querySelector('.announcement-themes-track');
+if (tickerTrack) {
+    tickerTrack.innerHTML += tickerTrack.innerHTML;
+}
+
 // FAQ Accordion
 document.querySelectorAll('.faq-question').forEach(button => {
     button.addEventListener('click', () => {

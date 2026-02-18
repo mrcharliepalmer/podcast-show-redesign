@@ -1440,11 +1440,26 @@ h1, h2, h3, h4, .section-title, .hero-title {
 }
 
 .announcement-themes {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem 1rem;
+    overflow: hidden;
+    width: 100%;
     margin-top: var(--spacing-md);
+}
+
+.announcement-themes-track {
+    display: flex;
+    gap: 1rem;
+    width: max-content;
+    animation: ticker-scroll 30s linear infinite;
+    padding: 0.25rem 0;
+}
+
+.announcement-themes:hover .announcement-themes-track {
+    animation-play-state: paused;
+}
+
+@keyframes ticker-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
 }
 
 .announcement-theme {
