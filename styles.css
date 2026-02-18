@@ -1957,10 +1957,6 @@ h1, h2, h3, h4, .section-title, .hero-title {
         font-size: 2.5rem;
     }
 
-    .stat-number {
-        font-size: 4rem;
-    }
-
     .who-attend-grid {
         grid-template-columns: 1fr;
     }
@@ -2003,7 +1999,23 @@ h1, h2, h3, h4, .section-title, .hero-title {
     }
 
     .tickets-info h2 {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
+    }
+
+    .pass-price {
+        font-size: 2.75rem;
+    }
+
+    .announcement-bar-text {
+        font-size: 1.75rem;
+    }
+
+    .announcement-bar-date {
+        font-size: 1rem;
+    }
+
+    .announcement-theme {
+        font-size: 1.5rem;
     }
 
     .quote-section .hero-quote-text {
@@ -2020,7 +2032,7 @@ h1, h2, h3, h4, .section-title, .hero-title {
     }
 
     .passes {
-        grid-template-columns: repeat(2, minmax(260px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .ticket-card h3 {
@@ -2140,5 +2152,25 @@ h1, h2, h3, h4, .section-title, .hero-title {
     .quote-carousel-track {
         min-height: 180px;
         height: 180px;
+    }
+
+    .tickets-info h2 {
+        font-size: 1.75rem;
+    }
+
+    .pass-price {
+        font-size: 2.25rem;
+    }
+
+    .announcement-bar-text {
+        font-size: 1.375rem;
+    }
+
+    .announcement-theme {
+        font-size: 1.125rem;
+    }
+
+    .passes {
+        max-width: 100%;
     }
 }
