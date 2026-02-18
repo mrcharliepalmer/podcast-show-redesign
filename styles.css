@@ -1530,25 +1530,22 @@ h1, h2, h3, h4, .section-title, .hero-title {
     margin-left: 1.5rem;
 }
 
-/* Divider: indicative design ends */
-.site-continues {
-    padding: var(--spacing-xl) var(--spacing-md);
+/* Section CTA — centred button below section content */
+.section-cta {
     text-align: center;
-    background: var(--bg-white);
-    border-top: 1px dashed rgba(0, 0, 0, 0.15);
+    margin-top: var(--spacing-lg);
 }
 
-.site-continues-text {
-    margin: 0;
-    font-size: clamp(1.5rem, 3vw, 2.25rem);
-    font-weight: 700;
-    font-family: 'Space Grotesk', sans-serif;
-    color: var(--primary-color);
+/* Tickets note link */
+.tickets-note-link {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: var(--transition);
 }
 
-/* Hidden: rest of homepage (Who Should Attend, Submissions, Programme, FAQ, Footer) */
-.homepage-rest-hidden {
-    display: none;
+.tickets-note-link:hover {
+    color: white;
 }
 
 /* CTA Section - Submissions */
