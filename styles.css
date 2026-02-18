@@ -410,7 +410,7 @@ h1, h2, h3, h4, .section-title, .hero-title {
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--spacing-md);
     text-align: center;
 }
@@ -420,11 +420,14 @@ h1, h2, h3, h4, .section-title, .hero-title {
 }
 
 .stat-number {
-    font-size: clamp(3.5rem, 8vw, 5.5rem);
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
     font-weight: 900;
     color: #1a1a1a;
     margin-bottom: var(--spacing-xs);
     letter-spacing: -0.03em;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
 }
 
 .stat-label {
@@ -1815,15 +1818,16 @@ h1, h2, h3, h4, .section-title, .hero-title {
     color: white;
 }
 
-/* Scroll reveal animations - sections visible by default */
+/* Scroll reveal animations - sections start hidden, animate in on scroll */
 .section-reveal {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-/* Animate in when scrolled into view (JavaScript adds .revealed) */
 .section-reveal.revealed {
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Responsive Design */

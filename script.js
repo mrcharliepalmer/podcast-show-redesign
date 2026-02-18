@@ -40,7 +40,24 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// Section scroll reveal
+// Stat counter animation
+function animateCounter(el) {
+    const text = el.textContent.trim();
+    const suffix = text.replace(/[\d,]/g, '');
+    const target = parseInt(text.replace(/[^0-9]/g, ''), 10);
+    if (!target) return;
+    const duration = 1500;
+    const start = performance.now();
+    function step(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target).toLocaleString() + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+}
+
+// Section scroll reveal + stat counters
 const revealOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -48,32 +65,36 @@ const revealOptions = {
 
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !entry.target.classList.contains('revealed')) {
             entry.target.classList.add('revealed');
         }
     });
 }, revealOptions);
 
-document.querySelectorAll('.section-reveal').forEach(section => {
-    revealObserver.observe(section);
-});
-
-// Animate stats on scroll
-const statObserverOptions = { threshold: 0.5, rootMargin: '0px' };
-const statObserver = new IntersectionObserver((entries) => {
+// Separate observer for counters — only fires when stats section is well into view
+const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            entry.target.querySelectorAll('.stat-number').forEach((el, i) => {
+                setTimeout(() => animateCounter(el), i * 150);
+            });
+            counterObserver.unobserve(entry.target);
         }
     });
-}, statObserverOptions);
+}, { threshold: 0.5 });
 
-document.querySelectorAll('.stat-item').forEach(item => {
-    item.style.opacity = '0';
-    item.style.transform = 'translateY(20px)';
-    item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    statObserver.observe(item);
+const statsSection = document.querySelector('.stats');
+if (statsSection) counterObserver.observe(statsSection);
+
+document.querySelectorAll('.section-reveal').forEach(section => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+        // Already in viewport on load — reveal instantly, no animation
+        section.style.transition = 'none';
+        section.classList.add('revealed');
+        requestAnimationFrame(() => section.style.transition = '');
+    }
+    revealObserver.observe(section);
 });
 
 // Quote carousel – auto-rotates; background syncs with each quote for energy
